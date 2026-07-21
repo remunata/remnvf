@@ -48,12 +48,14 @@
         mode = "n";
         lua = true;
         action = "function() Snacks.bufdelete() end";
+        desc = "Close current buffer";
       }
       {
         key = "<leader><leader>o";
         mode = "n";
         lua = true;
         action = "function() Snacks.bufdelete.other() end";
+        desc = "Close other buffers";
       }
 
       # Window navigation
