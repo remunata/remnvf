@@ -18,6 +18,10 @@
     terminal.toggleterm = {
       enable = true;
       mappings.open = "<C-\\>";
+      setupOpts = {
+        direction = "horizontal";
+        size = 22;
+      };
       lazygit = {
         enable = true;
         mappings.open = "<leader>_";

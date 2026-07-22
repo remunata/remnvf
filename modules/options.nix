@@ -1,14 +1,22 @@
-{pkgs, ...}: {
-  config = {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  config.vim = {
+    viAlias = true;
+    vimAlias = true;
+    debugMode.enable = false;
+
     # Extra packages available on PATH inside Neovim's wrapper, not tied
     # to a specific language/plugin module.
-    vim.extraPackages = with pkgs; [
+    extraPackages = with pkgs; [
       ripgrep
       fd
     ];
 
     # Vim options
-    vim.opts = {
+    opts = {
       hlsearch = true;
       inccommand = "split";
       scrolloff = 10;
@@ -31,5 +39,26 @@
       termguicolors = true;
       undofile = true;
     };
+
+    # Autogroups and autocommands
+    augroups = [
+      {
+        name = "YankHighlight";
+        clear = true;
+      }
+    ];
+
+    autocmds = [
+      {
+        event = ["TextYankPost"];
+        pattern = ["*"];
+        group = "YankHighlight";
+        callback = lib.generators.mkLuaInline ''
+          function()
+            vim.highlight.on_yank()
+          end
+        '';
+      }
+    ];
   };
 }
