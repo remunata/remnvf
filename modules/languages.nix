@@ -1,4 +1,4 @@
-{...}: {
+{
   config.vim.languages = {
     enableFormat = true;
     enableTreesitter = true;
