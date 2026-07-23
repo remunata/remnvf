@@ -13,6 +13,10 @@
         package = pkgs.vimPlugins.neogen;
         setupModule = "neogen";
       };
+      "smear-cursor.nvim" = {
+        package = pkgs.vimPlugins.smear-cursor-nvim;
+        setupModule = "smear_cursor";
+      };
     };
 
     keymaps = [
