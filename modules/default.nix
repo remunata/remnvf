@@ -6,6 +6,8 @@
     ./completion.nix
     ./languages.nix
     ./utils.nix
+    ./extra.nix
     ./keymaps.nix
+    ./override.nix
   ];
 }

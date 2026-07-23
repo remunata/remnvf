@@ -19,7 +19,10 @@
     json.enable = true;
     sql.enable = true;
     typescript.enable = true;
-    php.enable = true;
+    php = {
+      enable = true;
+      lsp.servers = ["intelephense"];
+    };
     go.enable = true;
     lua.enable = true;
     python.enable = true;

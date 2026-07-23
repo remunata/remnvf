@@ -1,19 +1,8 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   config.vim = {
     viAlias = true;
     vimAlias = true;
     debugMode.enable = false;
-
-    # Extra packages available on PATH inside Neovim's wrapper, not tied
-    # to a specific language/plugin module.
-    extraPackages = with pkgs; [
-      ripgrep
-      fd
-    ];
 
     # Vim options
     opts = {
