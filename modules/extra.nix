@@ -2,6 +2,7 @@
   config.vim = {
     # Extra packages available on PATH inside Neovim's wrapper
     extraPackages = with pkgs; [
+      lazygit
       ripgrep
       fd
     ];

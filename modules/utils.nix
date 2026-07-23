@@ -22,10 +22,6 @@
         direction = "horizontal";
         size = 22;
       };
-      lazygit = {
-        enable = true;
-        mappings.open = "<leader>_";
-      };
     };
   };
 }

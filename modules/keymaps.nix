@@ -178,6 +178,13 @@
         desc = "Open file explorer";
       }
       {
+        key = "<leader>_";
+        mode = "n";
+        lua = true;
+        action = "function() Snacks.lazygit() end";
+        desc = "Open lazygit in floating mode";
+      }
+      {
         key = "<leader>sf";
         mode = "n";
         lua = true;
