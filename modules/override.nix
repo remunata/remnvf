@@ -40,4 +40,22 @@ in {
       };
     };
   };
+
+  config.vim.keymaps = [
+    {
+      key = "<leader>ff";
+      mode = "n";
+      lua = true;
+      action = ''
+        function()
+          require("conform").format({
+            lsp_fallback = true,
+            async = true,
+            timeout = 3000
+          })
+        end
+      '';
+      desc = "Format code";
+    }
+  ];
 }

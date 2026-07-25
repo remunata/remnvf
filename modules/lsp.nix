@@ -2,7 +2,7 @@
   config.vim = {
     lsp = {
       enable = true;
-      formatOnSave = true;
+      formatOnSave = false;
 
       # Nice-to-haves around the LSP UX.
       lspkind.enable = true;
