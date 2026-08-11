@@ -11,7 +11,6 @@
       nvim-scrollbar.enable = true;
       nvim-web-devicons.enable = true;
       nvim-cursorline.enable = true;
-      fidget-nvim.enable = true;
       cellular-automaton.enable = true;
     };
 
