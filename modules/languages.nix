@@ -17,6 +17,7 @@
     css.enable = true;
     scss.enable = true;
     json.enable = true;
+    yaml.enable = true;
     sql.enable = true;
     typescript.enable = true;
     php = {

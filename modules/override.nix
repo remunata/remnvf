@@ -19,43 +19,48 @@
     end
   '';
 in {
-  config.vim.formatter.conform-nvim.setupOpts = {
-    formatters_by_ft = {
-      php = lib.mkLuaInline ''
-        function(bufnr)
-          local bufname = vim.api.nvim_buf_get_name(bufnr)
-          -- If inside "Views", return empty table {}
-          -- This prevents php-cs-fixer from running and triggers LSP fallback
-          if bufname:match("/Views/") then
-            return {}
+  config.vim = {
+    formatter.conform-nvim.setupOpts = {
+      formatters_by_ft = {
+        php = lib.mkLuaInline ''
+          function(bufnr)
+            local bufname = vim.api.nvim_buf_get_name(bufnr)
+            -- If inside "Views", return empty table {}
+            -- This prevents php-cs-fixer from running and triggers LSP fallback
+            if bufname:match("/Views/") then
+              return {}
+            end
+            -- Otherwise, use php-cs-fixer for everything else (Controllers, Models)
+            return { "php_cs_fixer" }
           end
-          -- Otherwise, use php-cs-fixer for everything else (Controllers, Models)
-          return { "php_cs_fixer" }
-        end
-      '';
-    };
-    formatters = {
-      php-cs-fixer = {
-        command = lib.mkForce php-cs-fixer-command;
+        '';
+      };
+      formatters = {
+        php-cs-fixer = {
+          command = lib.mkForce php-cs-fixer-command;
+        };
       };
     };
-  };
 
-  config.vim.keymaps = [
-    {
-      key = "<leader>ff";
-      mode = "n";
-      lua = true;
-      action = ''
-        function()
-          require("conform").format({
-            lsp_fallback = true,
-            async = true,
-            timeout = 3000
-          })
-        end
-      '';
-      desc = "Format code";
-    }
-  ];
+    keymaps = [
+      {
+        key = "<leader>ff";
+        mode = "n";
+        lua = true;
+        action = ''
+          function()
+            require("conform").format({
+              lsp_fallback = true,
+              async = true,
+              timeout = 3000
+            })
+          end
+        '';
+        desc = "Format code";
+      }
+    ];
+
+    # Disable phpstan (I know ....)
+    diagnostics.presets.phpstan.enable = lib.mkForce false;
+  };
 }
