@@ -16,6 +16,9 @@
       smartindent = true;
       breakindent = true;
 
+      shiftwidth = 4;
+      tabstop = 4;
+
       ignorecase = true;
       smartcase = true;
       signcolumn = "yes";
