@@ -60,7 +60,7 @@ in {
       }
     ];
 
-    # Disable phpstan (I know ....)
-    diagnostics.presets.phpstan.enable = lib.mkForce false;
+    # Disable nvim-lint (I know ....)
+    diagnostics.nvim-lint.enable = lib.mkForce false;
   };
 }
